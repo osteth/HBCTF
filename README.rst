@@ -1,11 +1,11 @@
 HBCTF
 ======
 
-.. image:: https://travis-ci.org/mapbox/HBCTF.svg
-   :target: https://travis-ci.org/mapbox/HBCTF
-
-.. image:: https://coveralls.io/repos/mapbox/HBCTF/badge.png
-   :target: https://coveralls.io/r/mapbox/HBCTF
+.. image:: https://travis-ci.org/osteth/HBCTF.svg?branch=master
+   :target: https://travis-ci.org/osteth/HBCTF
+   
+.. image:: https://coveralls.io/repos/github/osteth/HBCTF/badge.svg
+   :target: https://coveralls.io/github/osteth/HBCTF
 
 A skeleton of a Python package with CLI and test suite included.
    
