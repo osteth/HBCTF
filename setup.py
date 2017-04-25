@@ -22,7 +22,7 @@ setup(name='HBCTF',
       zip_safe=False,
       install_requires=[
           'click',
-          'Flask-api'
+          'Flask-API'
       ],
       extras_require={
           'test': ['pytest'],

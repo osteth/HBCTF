@@ -9,7 +9,7 @@ HBCTF
 
 A skeleton of a Python package with CLI and test suite included.
    
-.. image:: https://farm4.staticflickr.com/3951/15672691531_3037819613_o_d.png
+.. image:: http://www.hackbama.com/wp-content/uploads/2017/03/Hackbama_Logo-enc-400x400.png
 
 Customization quick start
 -------------------------
@@ -34,7 +34,7 @@ Then install in locally editable (``-e``) mode and run the tests.
 
 .. code-block:: console
 
-    pip install -e .[test]
+    sudo pip install -e .[test]
     py.test
 
 Finally, give the command line program a try.
