@@ -9,19 +9,20 @@ with codecs_open('README.rst', encoding='utf-8') as f:
 
 setup(name='HBCTF',
       version='0.0.1',
-      description=u"Skeleton of a Python package",
+      description=u"Hacker Bootcamp CTF game",
       long_description=long_description,
       classifiers=[],
       keywords='',
-      author=u"Sean Gillies",
-      author_email='sean@mapbox.com',
-      url='https://github.com/mapbox/HBCTF',
+      author=u"Seth Wahle",
+      author_email='seth@sethwahle.com',
+      url='https://github.com/osteth/HBCTF',
       license='MIT',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'click'
+          'click',
+          'Flask-api'
       ],
       extras_require={
           'test': ['pytest'],
