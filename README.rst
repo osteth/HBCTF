@@ -7,11 +7,11 @@ HBCTF
 .. image:: https://coveralls.io/repos/github/osteth/HBCTF/badge.svg
    :target: https://coveralls.io/github/osteth/HBCTF
 
-A skeleton of a Python package with CLI and test suite included.
+A hybrid CTF game, combining a dev-ops service hack and patch, jeopardy style flags, and an explorable battfield were players go head to head to control strategic network nodes. 
    
 .. image:: http://www.hackbama.com/wp-content/uploads/2017/03/Hackbama_Logo-enc-400x400.png
 
-Customization quick start
+Quick start
 -------------------------
 
 To use HBCTF as the start of a new project, do the following, preferably in
@@ -20,15 +20,7 @@ a virtual environment. Clone the repo.
 .. code-block:: console
 
     git clone https://github.com/mapbox/HBCTF myproject
-    cd myproject
-
-Replace all occurrences of 'HBCTF' with the name of your own project.
-(Note: the commands below require bash, find, and sed and are yet tested only on OS X.)
-
-.. code-block:: console
-
-    if [ -d HBCTF ]; then find . -not -path './.git*' -type f -exec sed -i '' -e 's/HBCTF/myproject/g' {} + ; fi
-    mv HBCTF myproject
+    cd HBCTF
 
 Then install in locally editable (``-e``) mode and run the tests.
 
@@ -36,35 +28,69 @@ Then install in locally editable (``-e``) mode and run the tests.
 
     sudo pip install -e .[test]
     py.test
+Then run the game API.
+.. code-block:: console
 
-Finally, give the command line program a try.
+    python3 HBCTF/scripts/api.py
+
+Finally, give the command line game control program a try.
 
 .. code-block:: console
 
-    myproject --help
+    HBCTF --help
     myproject 4
 
+
+
+
+Services API explaination 
+--------
+
+# Checkin --> Token Decryption --> ScoreTokentSubmit
+
+## Checkin 
+Player checks into the game server and submits to the server the ip address and port their service is running on.  The server responds out to the player with key and an encrypted score token that the player can decrypt and submit to recieve points. 
+# Player Actions
+* Checkin with IP and port they are running their service on.
+* Accept tokens and dectypts them
+* Submit decrypted tokens back to the server decrypted. 
+# Server Actions
+* Recieve checkin information and store it in DB. 
+* Pass out tokens every 5 minuts.
+* Recieve decrypted tokens and register scores.
+
+## ScoreTokentSubmit
+Player submits the decrypted token back to the server to gain their points. 
+
+# CLI options
+## Start
+Starts the api server 
+### -flags
+        -p  Specify a port for the service to run on. 
+        
+## Stop
+stops the API server
+
+## Status
+displays the server
+
+Dev Roadmap
+---
+* Services API -> unit tests -> documentation.
+* Game Control CLI -> unit tests -> documentation.
+* Expad API for jeopardy stype flags -> unit tests -> documentation.
+* Jeopardy style scoreboard -> unit tests -> recustomization pipeline-> documentation.
+* Expand API for battleground features -> unit tests -> documentation.
+* Build battleground VM's -> Network VM's -> Seutup High Value Nodes and hook them to API -> Recustomization Pipeline -> documentation.
+Dev Notes:
+---
 To help prevent uncustomized forks of HBCTF from being uploaded to PyPI,
 I've configured the setup's upload command to dry run. Make sure to remove
 this configuration from
 `setup.cfg <https://docs.python.org/2/install/index.html#inst-config-syntax>`__
 when you customize HBCTF.
-
-Please also note that the Travis-CI and Coveralls badge URLs and links in the README
-contain the string 'mapbox.' You'll need to change this to your own user or organization
-name and turn on the webhooks for your new project.
-
-A post on the Mapbox blog has more information about this project:
-https://www.mapbox.com/blog/HBCTF/.
-
-See also
---------
-
-Here are a few other tools for initializing Python projects.
-
-- Paste Script's `paster create <http://pythonpaste.org/script/#paster-create>`__ is
-  one that I've used for a long time.
-- `cookiecutter-pypackage <https://github.com/audreyr/cookiecutter-pypackage>`__ is
-  a Cookiecutter template for a Python package. Cookiecutter supports many languages,
-  includes Travis configuration and much more.
-
+logging 
+isatty
+colrama
+progressbar (progressbar2)
+ 

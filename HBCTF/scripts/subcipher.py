@@ -18,7 +18,6 @@ to crack.
 """
 import random
 
-
 chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + \
         'abcdefghijklmnopqrstuvwxyz' + \
         '0123456789' + \
@@ -39,7 +38,19 @@ def decrypt(key, ciphertext):
     """Decrypt the string and return the plaintext"""
     flipped = {v: k for k, v in key.items()}
     return ''.join(flipped[l] for l in ciphertext)
-	
+
+
+def show_result(plaintext):
+    """Generate a resulting cipher with elements shown"""
+    key = generate_key()
+    encrypted = encrypt(key, plaintext)
+    decrypted = decrypt(key, encrypted)
+
+    print('Key: %s' % key)
+    print('Plaintext: %s' % plaintext)
+    print('Encrytped: %s' % encrypted)
+    print('Decrytped: %s' % decrypted)
+
 
 if __name__ == '__main__':
     show_result('Hello, world!')
