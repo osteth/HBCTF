@@ -9,14 +9,14 @@ def RandomToken(length):
    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(length))
 
 def CheckinUpdate(IP, Port, TeamID):
-#Takes in data from Player_Checkin and udates the database.
+	'''Takes in data from Player_Checkin and udates the database.'''
 	key = subcipher.generate_key()
-	Token = RandomToken(32)
+	Token = RandomToken(64)
 	encrypted = subcipher.encrypt(key, Token)
 	return(Token, key)
 	
 def ServiceScore(TeamID, Token):
-#takes in data from STS, checks token for validity and increases the teams score if valid.
+	'''takes in data from STS, checks token for validity and increases the teams score if valid.'''
 	return()
 	
 @app.route("/checkin/", methods=['GET', 'POST'])
@@ -43,11 +43,11 @@ def STS():
 	Example: 
 	curl -H "Content-Type: application/json" -X POST -d '{"TeamID": "Highlander","Token": "therecanbeonlyone"}' http://localhost:5001/ScoreTokentSubmit/
 	'''
-
 	sts_resp = request.data
 	Token = sts_resp.get('Token')
 	TeamID  = sts_resp.get('TeamID')
-	print(TeamID, Token)
+	# print(TeamID, Token)
+	print('Team ' + TeamID + 'has scored service points!')
 	ServiceScore(TeamID, Token)
 	
 	return {'request data': request.data}

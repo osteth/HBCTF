@@ -1,10 +1,8 @@
 import HBCTF
-from HBCTF.scripts import subcipher
+from HBCTF.scripts import api
 
-def test_subcipher():
-	message = 'Your invited to a unicorn party! - will you Bring NINJA chips?'
-	key = subcipher.generate_key()
-	ciphertext = subcipher.encrypt(key, message)
-	decrypted = subcipher.decrypt(key, ciphertext)
-	assert decrypted == 'Your invited to a unicorn party! - will you Bring NINJA chips?'
-	
+
+def test_token_generator():
+	test_token = api.RandomToken(20)
+	assert test_token is not ''
+	assert len(test_token) == 20
