@@ -1,5 +1,5 @@
 from flask import request, url_for
-from flask.ext.api import FlaskAPI, status, exceptions
+from flask_api import FlaskAPI, status, exceptions
 import json, random, string
 import subcipher
 
