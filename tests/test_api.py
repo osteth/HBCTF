@@ -1,5 +1,10 @@
 import HBCTF
+from HBCTF.scripts import subcipher
 
-'''
-This will contain all of the test to make sure that the API is working once I figure out how to run unit tests against an API without standing up a server....???
-'''
+def test_subcipher():
+	message = 'Your invited to a unicorn party! - will you Bring NINJA chips?'
+	key = subcipher.generate_key()
+	ciphertext = subcipher.encrypt(key, message)
+	decrypted = subcipher.decrypt(key, ciphertext)
+	assert decrypted == 'Your invited to a unicorn party! - will you Bring NINJA chips?'
+	
