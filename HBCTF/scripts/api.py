@@ -1,8 +1,12 @@
 from flask import request, url_for
 from flask_api import FlaskAPI, status, exceptions
 import json, random, string
-import subcipher
+try:
+	from . import subcipher
+except:
+	import subcipher
 
+	
 app = FlaskAPI(__name__)
 
 def RandomToken(length):
