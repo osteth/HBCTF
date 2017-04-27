@@ -22,13 +22,14 @@ setup(name='HBCTF',
       zip_safe=False,
       install_requires=[
           'click',
-          'Flask-API'
+          'Flask-API',
+		  'daemonocle'
       ],
       extras_require={
           'test': ['pytest'],
       },
       entry_points="""
       [console_scripts]
-      HBCTF=HBCTF.scripts.cli:cli
+      HBCTF=HBCTF.scripts.cli:main
       """
       )

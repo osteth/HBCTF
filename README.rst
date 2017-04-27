@@ -11,6 +11,9 @@ A hybrid CTF game, combining a dev-ops service hack and patch, jeopardy style fl
    
 .. image:: http://www.hackbama.com/wp-content/uploads/2017/03/Hackbama_Logo-enc-400x400.png
 
+.. contents:: **Table of Contents**
+  :backlinks: none
+
 Quick start
 -------------------------
 
