@@ -63,7 +63,7 @@ def show_result(plaintext, n):
     print('Plaintext: %s' % plaintext)
     print('Encrytped: %s' % encrypted)
     print('Decrytped: %s' % decrypted)
-
+    return(decrypted)
 
 if __name__ == '__main__':
     show_result('the grass is always greener', 5)

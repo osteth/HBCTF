@@ -50,7 +50,7 @@ def show_result(plaintext):
     print('Plaintext: %s' % plaintext)
     print('Encrytped: %s' % encrypted)
     print('Decrytped: %s' % decrypted)
-
+    return(decrypted)
 
 if __name__ == '__main__':
     show_result('Hello, world!')
