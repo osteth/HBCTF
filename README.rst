@@ -23,8 +23,7 @@ a virtual environment. Clone the repo.
 .. code-block:: console
 
     git clone https://github.com/osteth/HBCTF myproject
-    cd myproject
-
+    cd HBCTF
 Then install in locally editable (``-e``) mode and run the tests.
 
 .. code-block:: console
@@ -41,7 +40,6 @@ Finally, give the command line game control program a try.
 .. code-block:: console
 
     HBCTF --help
-    myproject 4
 
 
 
@@ -51,6 +49,7 @@ Services API explaination
 
 Checkin --> Token Decryption --> ScoreTokentSubmit
 
+
 Checkin
 ------
 Player checks into the game server and submits to the server the ip address and port their service is running on.  The server responds out to the player with key and an encrypted score token that the player can decrypt and submit to recieve points.
@@ -58,19 +57,23 @@ Player checks into the game server and submits to the server the ip address and 
 * Player Actions
    * Checkin with IP and port they are running their service on.
    * Accept tokens and dectypts them
+
    * Submit decrypted tokens back to the server decrypted.
 * Server Actions
    * Recieve checkin information and store it in DB.
+
    * Pass out tokens every 5 minuts.
    * Recieve decrypted tokens and register scores.
 
 ScoreTokentSubmit
 --------
+
 Player submits the decrypted token back to the server to gain their points.
 * CLI options
    * Start, Starts the api server
       * -flags
       * -p  Specify a port for the service to run on.
+
    * Stop, Stops the API server
    * Status, displays the server
 
@@ -91,8 +94,10 @@ this configuration from
 `setup.cfg <https://docs.python.org/2/install/index.html#inst-config-syntax>`__
 when you customize HBCTF.
 
+
 * logging
 * isatty
 * colrama
 * progressbar (progressbar2)
+
 

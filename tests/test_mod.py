@@ -2,10 +2,6 @@ import HBCTF
 from HBCTF.scripts import subcipher
 from HBCTF.scripts import cesarcipher
 
-
-def test_has_legs():
-    assert not HBCTF.has_legs
-
 	
 def test_subcipher():
 	'''encrypts and decrypts the message and tests if the messes is the same before and after to ensure cipher script is not broken'''

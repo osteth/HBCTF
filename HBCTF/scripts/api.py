@@ -1,6 +1,8 @@
+
 from flask import request, url_for
 from flask_api import FlaskAPI, status, exceptions
 #FlaskAPI docs avilable at http://www.flaskapi.org/
+
 import json, random, string
 try:
 	from . import subcipher
@@ -31,16 +33,20 @@ def Player_Checkin():
 	Example: 
 	curl -H "Content-Type: application/json" -X POST -d '{"TeamID": "Mudkips","IP": "192.168.0.1","Port": "5001"}' http://localhost:5001/checkin/
 	'''
-	checkin_resp = request.data
-	IP = checkin_resp.get('IP')
-	Port  = checkin_resp.get('Port')
-	TeamID  = checkin_resp.get('TeamID')
-	# print(IP, Port, TeamID)
-	Token, key = CheckinUpdate(IP, Port, TeamID)
-	
-	return {'Score Token': Token,
-			'Key': key}
-	
+	try:
+		checkin_resp = request.data
+
+		IP = checkin_resp.get('IP')
+		Port  = checkin_resp.get('Port')
+		TeamID  = checkin_resp.get('TeamID')
+		# print(IP, Port, TeamID)
+		Token, key = CheckinUpdate(IP, Port, TeamID)
+		
+		return {'Score Token': Token,
+				'Key': key}
+	except:
+		return {'Invalid': 'request'}
+				
 @app.route("/ScoreTokentSubmit/", methods=['GET','POST'])
 def STS():
 	'''Accepts players score submitions and passes its info over to ServiceScore funtion to validate the token and then update the teams score when its valid.
@@ -48,14 +54,17 @@ def STS():
 	Example: 
 	curl -H "Content-Type: application/json" -X POST -d '{"TeamID": "Highlander","Token": "therecanbeonlyone"}' http://localhost:5001/ScoreTokentSubmit/
 	'''
-	sts_resp = request.data
-	Token = sts_resp.get('Token')
-	TeamID  = sts_resp.get('TeamID')
-	# print(TeamID, Token)
-	print('Team ' + TeamID + 'has scored service points!')
-	ServiceScore(TeamID, Token)
-	
-	return {'request data': request.data}
-
+	try:
+		sts_resp = request.data
+		Token = sts_resp.get('Token')
+		TeamID  = sts_resp.get('TeamID')
+		# print(TeamID, Token)
+		print('Team ' + TeamID + 'has scored service points!')
+		ServiceScore(TeamID, Token)
+		
+		return {'request data': request.data}
+	except:
+		return {'Invalid': 'request'}
+		
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5001,debug=True)
