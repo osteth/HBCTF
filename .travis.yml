@@ -11,3 +11,5 @@ script:
 after_success:
   - coveralls
 sudo: false
+notifications:
+  slack: hackbama:zd8Y7CleJl3Nuepb5cKthS8p
