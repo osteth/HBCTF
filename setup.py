@@ -30,6 +30,6 @@ setup(name='HBCTF',
       },
       entry_points="""
       [console_scripts]
-      HBCTF=HBCTF.scripts.cli:main
+      HBCTF=HBCTF.scripts.cli:cli
       """
       )

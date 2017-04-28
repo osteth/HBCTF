@@ -69,13 +69,28 @@ ScoreTokentSubmit
 --------
 
 Player submits the decrypted token back to the server to gain their points.
-* CLI options
-   * Start, Starts the api server
-      * -flags
-      * -p  Specify a port for the service to run on.
 
-   * Stop, Stops the API server
-   * Status, displays the server
+CLI Commands
+-----
+Usage: HBCTF [OPTIONS] COMMAND [ARGS]...
+
+Options:
+Flag | Type| Description
+------------ | -------------| -------------
+  -p, --port | INTEGER | Port numer to serve the API on.
+  -v, --verbose | INTEGER | Sets the verbosity of outputs
+  -l, --logging | INTEGER | Sets the detail level of logs
+  --help        |        | Show this message and exit.
+
+Commands:
+Command | Action
+------------ | ------------
+dropdb | Drop the database.
+initdb | Initialize the database.
+restart| Restart the API.
+start  | Start the API.
+status | Show the status of the API.
+stop   | Stop the API.
 
 Dev Roadmap
 -----
@@ -99,5 +114,4 @@ when you customize HBCTF.
 * isatty
 * colrama
 * progressbar (progressbar2)
-
 

@@ -1,14 +1,11 @@
-
 from flask import request, url_for
 from flask_api import FlaskAPI, status, exceptions
 #FlaskAPI docs avilable at http://www.flaskapi.org/
-
 import json, random, string
 try:
 	from . import subcipher
 except:
 	import subcipher
-
 	
 app = FlaskAPI(__name__)
 
@@ -35,15 +32,15 @@ def Player_Checkin():
 	'''
 	try:
 		checkin_resp = request.data
-
 		IP = checkin_resp.get('IP')
 		Port  = checkin_resp.get('Port')
 		TeamID  = checkin_resp.get('TeamID')
-		# print(IP, Port, TeamID)
-		Token, key = CheckinUpdate(IP, Port, TeamID)
-		
-		return {'Score Token': Token,
-				'Key': key}
+		if IP and Port and TeamID is not None:
+			Token, key = CheckinUpdate(IP, Port, TeamID)
+			return {'Score Token': Token,
+					'Key': key}
+		else:
+			return {'Invalid': 'request'}
 	except:
 		return {'Invalid': 'request'}
 				
@@ -58,11 +55,12 @@ def STS():
 		sts_resp = request.data
 		Token = sts_resp.get('Token')
 		TeamID  = sts_resp.get('TeamID')
-		# print(TeamID, Token)
-		print('Team ' + TeamID + 'has scored service points!')
-		ServiceScore(TeamID, Token)
-		
-		return {'request data': request.data}
+		if Token and TeamID is not None:
+			print('Team ' + TeamID + 'has scored service points!')
+			ServiceScore(TeamID, Token)
+			return {'request data': request.data}
+		else:
+			return {'Invalid': 'request'}
 	except:
 		return {'Invalid': 'request'}
 		
