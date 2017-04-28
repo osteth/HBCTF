@@ -77,7 +77,7 @@ Usage: HBCTF [OPTIONS] COMMAND [ARGS]...
 Options:
 
 Flag | Type| Description
------------- | -------------| -------------
+--- | ---| ---
   -p, --port | INTEGER | Port numer to serve the API on.
   -v, --verbose | INTEGER | Sets the verbosity of outputs
   -l, --logging | INTEGER | Sets the detail level of logs
@@ -86,7 +86,7 @@ Flag | Type| Description
 Commands:
 
 Command | Action
------------- | ------------
+---|---
 dropdb | Drop the database.
 initdb | Initialize the database.
 restart| Restart the API.
