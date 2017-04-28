@@ -75,6 +75,7 @@ CLI Commands
 Usage: HBCTF [OPTIONS] COMMAND [ARGS]...
 
 Options:
+
 Flag | Type| Description
 ------------ | -------------| -------------
   -p, --port | INTEGER | Port numer to serve the API on.
@@ -83,6 +84,7 @@ Flag | Type| Description
   --help        |        | Show this message and exit.
 
 Commands:
+
 Command | Action
 ------------ | ------------
 dropdb | Drop the database.
