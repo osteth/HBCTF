@@ -86,7 +86,7 @@ Flag | Type| Description
 Commands:
 
 Command | Action
----|---
+--- | ---
 dropdb | Drop the database.
 initdb | Initialize the database.
 restart| Restart the API.
