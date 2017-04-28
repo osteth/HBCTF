@@ -22,14 +22,16 @@ a virtual environment. Clone the repo.
 
 .. code-block:: console
 
-    git clone https://github.com/osteth/HBCTF myproject
+    git clone https://github.com/osteth/HBCTF
     cd HBCTF
+
 Then install in locally editable (``-e``) mode and run the tests.
 
 .. code-block:: console
 
     sudo pip install -e .[test]
     py.test
+
 Then run the game API.
 .. code-block:: console
 
@@ -45,54 +47,56 @@ Finally, give the command line game control program a try.
 
 
 Services API explaination
---------
+-------------------------
 
 Checkin --> Token Decryption --> ScoreTokentSubmit
 
 
 Checkin
-------
-Player checks into the game server and submits to the server the ip address and port their service is running on.  The server responds out to the player with key and an encrypted score token that the player can decrypt and submit to recieve points.
+-------
+Player checks into the game server and submits to the server the ip address and port their service is running on.  The server responds out to the player with key and an encrypted score token that the player can decrypt and submit to receive points.
 
 * Player Actions
    * Checkin with IP and port they are running their service on.
-   * Accept tokens and dectypts them
+   * Accept tokens and decrypts them
 
    * Submit decrypted tokens back to the server decrypted.
 * Server Actions
    * Recieve checkin information and store it in DB.
 
-   * Pass out tokens every 5 minuts.
+   * Pass out tokens every 5 minutes.
    * Recieve decrypted tokens and register scores.
 
 ScoreTokentSubmit
---------
+-----------------
 
 Player submits the decrypted token back to the server to gain their points.
 
 CLI Commands
------
+------------
 Usage: HBCTF [OPTIONS] COMMAND [ARGS]...
 
-Options:
+**Options:**
++--------------+---------+--------------------------------+
+|Flag          |Type     | Description                    |
++--------------+---------+--------------------------------+
+| -p, --port   | INTEGER | Port numer to serve the API on.|
+|-v, --verbose | INTEGER | Sets the verbosity of outputs  |
+|-l, --logging | INTEGER | Sets the detail level of logs  |
+|--help        |         | Show this message and exit.    |
++---------------------------------------------------------+
 
-Flag | Type| Description
---- | ---| ---
-  -p, --port | INTEGER | Port numer to serve the API on.
-  -v, --verbose | INTEGER | Sets the verbosity of outputs
-  -l, --logging | INTEGER | Sets the detail level of logs
-  --help        |        | Show this message and exit.
-
-Commands:
-
-Command | Action
---- | ---
-dropdb | Drop the database.
-initdb | Initialize the database.
-restart| Restart the API.
-start  | Start the API.
-status | Show the status of the API.
-stop   | Stop the API.
+**Commands:**
++--------+-------------------------------+
+|Command | Action                        |
++--------+-------------------------------+
+|dropdb  | Drop the database.            |
+|initdb  | Initialize the database.      |
+|restart | Restart the API.              |
+|start   | Start the API.                |
+|status  | Show the status of the API.   |
+|stop    | Stop the API.                 |
++--------+-------------------------------+
 
 Dev Roadmap
 -----
