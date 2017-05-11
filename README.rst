@@ -32,10 +32,10 @@ Then install in locally editable (``-e``) mode and run the tests.
     sudo pip install -e .[test]
     py.test
 
-Then run the game API.
+Then install couchDB (Developtment and testing is done on Ubuntu 16.04)
 .. code-block:: console
 
-    python3 HBCTF/scripts/api.py
+    sudo apt-get install couchDB
 
 Finally, give the command line game control program a try.
 

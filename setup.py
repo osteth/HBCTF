@@ -23,7 +23,7 @@ setup(name='HBCTF',
       install_requires=[
           'click',
           'Flask-API',
-		  'daemonocle'
+		  'couchdb'
       ],
       extras_require={
           'test': ['pytest'],
