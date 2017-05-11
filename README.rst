@@ -53,7 +53,7 @@ Checkin --> Token Decryption --> ScoreTokentSubmit
 
 
 Checkin
--------
+------------------------
 Player checks into the game server and submits to the server the ip address and port their service is running on.  The server responds out to the player with key and an encrypted score token that the player can decrypt and submit to receive points.
 
 * Player Actions
@@ -68,25 +68,27 @@ Player checks into the game server and submits to the server the ip address and 
    * Recieve decrypted tokens and register scores.
 
 ScoreTokentSubmit
------------------
+-----------------------
 
 Player submits the decrypted token back to the server to gain their points.
 
 CLI Commands
-------------
+-----------------------
 Usage: HBCTF [OPTIONS] COMMAND [ARGS]...
 
-**Options:**
-+--------------+---------+--------------------------------+
-|Flag          |Type     | Description                    |
-+--------------+---------+--------------------------------+
-| -p, --port   | INTEGER | Port numer to serve the API on.|
-|-v, --verbose | INTEGER | Sets the verbosity of outputs  |
-|-l, --logging | INTEGER | Sets the detail level of logs  |
-|--help        |         | Show this message and exit.    |
-+---------------------------------------------------------+
+Options:
+------------------------
++---------------+---------+---------------------------------+
+|Flag           |Type     | Description                     |
++---------------+---------+---------------------------------+
+| -p, --port    | INTEGER | Port number to serve the API on.|
+| -v, --verbose | INTEGER | Sets the verbosity of outputs   |
+| -l, --logging | INTEGER | Sets the detail level of logs   |
+| --help        |         | Show this message and exit.     |
++---------------+---------+---------------------------------+
 
-**Commands:**
+Commands:
+-----------------------
 +--------+-------------------------------+
 |Command | Action                        |
 +--------+-------------------------------+
@@ -99,7 +101,7 @@ Usage: HBCTF [OPTIONS] COMMAND [ARGS]...
 +--------+-------------------------------+
 
 Dev Roadmap
------
+----------------------
 * Services API -> unit tests -> documentation.
 * Game Control CLI -> unit tests -> documentation.
 * Expad API for jeopardy stype flags -> unit tests -> documentation.
@@ -108,7 +110,7 @@ Dev Roadmap
 * Build battleground VM's -> Network VM's -> Seutup High Value Nodes and hook them to API -> Recustomization Pipeline -> documentation.
 
 Dev Notes:
-------
+-----------------------
 To help prevent uncustomized forks of HBCTF from being uploaded to PyPI,
 I've configured the setup's upload command to dry run. Make sure to remove
 this configuration from
