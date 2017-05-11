@@ -1,7 +1,8 @@
 from flask import request, url_for
 from flask_api import FlaskAPI, status, exceptions
 #FlaskAPI docs avilable at http://www.flaskapi.org/
-import json, random, string
+import json, random, string, couchdb, click, subprocess
+
 try:
 	from . import subcipher
 except:
@@ -11,6 +12,39 @@ app = FlaskAPI(__name__)
 
 def RandomToken(length):
    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(length))
+
+def dbconnect():
+    with open('DBdata.json') as data_file:    
+        data = json.load(data_file)
+        ssl = data.get('ssl')
+        username = data.get('username')
+        password = data.get('password')
+        host = data.get('host')
+        port = data.get('port')
+        data_file.close()
+        if ssl is False:
+            ssl = 'http://'
+        else: 
+            ssl = 'https://'
+        couch = couchdb.Server(ssl + str(username) + ':' + str(password) + '@' + str(host) +':' + str(port) + '/')
+        return(couch)
+        
+def initdb():
+    couch = dbconnect()
+    try:
+        couch = couchdb.Server() # assuming localhost
+        db = couch['ctf']
+    except:
+        db = couch.create('ctf')
+    subprocess.run(['/bin/bash', '-O', 'extglob', '-c', 'service couchdb start'])
+    click.echo('Database Started.')
+    return()
+
+def start(port, debug):
+    app.run(host='0.0.0.0',port=port,debug=debug)
+    couch = couchdb.Server('http://' + str(username) + ':' + str(password) + '@' + str(host) +':' + str(dbport) + '/')
+    db = couch.create('services')
+    return()
 
 def CheckinUpdate(IP, Port, TeamID):
 	'''Takes in data from Player_Checkin and udates the database.'''
@@ -65,4 +99,4 @@ def STS():
 		return {'Invalid': 'request'}
 		
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5001,debug=True)
+    start()
